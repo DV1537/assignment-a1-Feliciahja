@@ -21,6 +21,7 @@ int main(int argc, const char * argv[])
     {
         while (myReadFile >> value)
         {
+            //Expand array if no space left
             if(numValues == arraySize) 
             {
                 double *tempArray = new double[arraySize * 2];
@@ -41,14 +42,14 @@ int main(int argc, const char * argv[])
         if (myReadFile.fail() && !(myReadFile.eof()))
         {
             std::cout << "The file contained invalid input.\nThe program will terminate." << std::endl;
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         myReadFile.close();
     }
     else
     {
         std::cout << "Error opening the file.\n"; 
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     average = total / numValues;
